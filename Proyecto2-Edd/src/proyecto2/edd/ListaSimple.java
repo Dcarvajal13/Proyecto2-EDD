@@ -11,12 +11,14 @@ package proyecto2.edd;
  * @param <T> El tipo de dato a almacenar.
  */
 
-public class ListaSimple<T> {
+import java.io.Serializable;
+
+public class ListaSimple<T> implements Serializable {
 
     /**
      * Clase interna que representa un nodo de la lista.
      */
-    private class NodoLista {
+    private class NodoLista implements Serializable{
         T dato;
         NodoLista siguiente;
 
@@ -24,6 +26,27 @@ public class ListaSimple<T> {
             this.dato = dato;
             this.siguiente = null;
         }
+    }
+    
+    public boolean eliminar(T dato) {
+        if (cabeza == null) return false;
+
+        if (cabeza.dato.equals(dato)) {
+            cabeza = cabeza.siguiente;
+            tamano--;
+            return true;
+        }
+
+        NodoLista actual = cabeza;
+        while (actual.siguiente != null) {
+            if (actual.siguiente.dato.equals(dato)) {
+                actual.siguiente = actual.siguiente.siguiente;
+                tamano--;
+                return true;
+            }
+            actual = actual.siguiente;
+        }
+        return false;
     }
 
     private NodoLista cabeza;

@@ -13,12 +13,14 @@ package proyecto2.edd;
  * @param <T> El tipo de dato a almacenar, debe ser comparable.
  */
 
-public class ArbolAVL<T extends Comparable<T>> {
+import java.io.Serializable;
+
+public class ArbolAVL<T extends Comparable<T>> implements Serializable{
     
     /**
      * Clase interna que representa un nodo del Árbol AVL.
      */
-    private class NodoAVL {
+    private class NodoAVL implements Serializable{
         T dato;
         NodoAVL izquierdo;
         NodoAVL derecho;
@@ -69,6 +71,65 @@ public class ArbolAVL<T extends Comparable<T>> {
     public T buscar(T dato) {
         NodoAVL nodo = buscarRecursivo(this.raiz, dato);
         return (nodo == null) ? null : nodo.dato;
+    }
+    
+    /**
+     * Elimina un dato del árbol.
+     */
+    public void eliminar(T dato) {
+        this.raiz = eliminarRecursivo(this.raiz, dato);
+    }
+
+    private NodoAVL eliminarRecursivo(NodoAVL nodo, T dato) {
+        if (nodo == null) return null;
+
+        int comparacion = dato.compareTo(nodo.dato);
+
+        if (comparacion < 0) {
+            nodo.izquierdo = eliminarRecursivo(nodo.izquierdo, dato);
+        } else if (comparacion > 0) {
+            nodo.derecho = eliminarRecursivo(nodo.derecho, dato);
+        } else {
+            // Nodo encontrado. Caso 1: Sin hijos o un hijo
+            if ((nodo.izquierdo == null) || (nodo.derecho == null)) {
+                NodoAVL temp = (nodo.izquierdo != null) ? nodo.izquierdo : nodo.derecho;
+                if (temp == null) {
+                    nodo = null; // Sin hijos
+                } else {
+                    nodo = temp; // Un hijo
+                }
+            } else {
+                // Caso 2: Dos hijos. Buscar sucesor in-orden (el menor del lado derecho)
+                NodoAVL temp = nodoMinimo(nodo.derecho);
+                nodo.dato = temp.dato; // Copiamos el dato
+                nodo.derecho = eliminarRecursivo(nodo.derecho, temp.dato); // Eliminamos el sucesor
+            }
+        }
+
+        if (nodo == null) return null;
+
+        // Actualizar altura y balancear (igual que en inserción)
+        actualizarAltura(nodo);
+        int fe = obtenerFactorEquilibrio(nodo);
+
+        if (fe > 1 && obtenerFactorEquilibrio(nodo.izquierdo) >= 0) return rotacionDerecha(nodo);
+        if (fe > 1 && obtenerFactorEquilibrio(nodo.izquierdo) < 0) {
+            nodo.izquierdo = rotacionIzquierda(nodo.izquierdo);
+            return rotacionDerecha(nodo);
+        }
+        if (fe < -1 && obtenerFactorEquilibrio(nodo.derecho) <= 0) return rotacionIzquierda(nodo);
+        if (fe < -1 && obtenerFactorEquilibrio(nodo.derecho) > 0) {
+            nodo.derecho = rotacionDerecha(nodo.derecho);
+            return rotacionIzquierda(nodo);
+        }
+
+        return nodo;
+    }
+
+    private NodoAVL nodoMinimo(NodoAVL nodo) {
+        NodoAVL actual = nodo;
+        while (actual.izquierdo != null) actual = actual.izquierdo;
+        return actual;
     }
 
     /**
@@ -264,7 +325,7 @@ public class ArbolAVL<T extends Comparable<T>> {
         return y; // y es la nueva raíz
     }
 
-    // --- MÉTODO DE PRUEBA (MAIN) ---
+    // MÉTODO DE PRUEBA (MAIN)
 
     /**
      * Método main para probar la implementación del Árbol AVL.
