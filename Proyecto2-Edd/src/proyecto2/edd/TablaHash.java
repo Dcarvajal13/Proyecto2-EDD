@@ -15,7 +15,10 @@ package proyecto2.edd;
  * @param <K> El tipo de la Clave (debe tener un buen .toString()).
  * @param <V> El tipo del Valor a almacenar.
  */
-public class TablaHash<K, V> {
+
+import java.io.Serializable;
+
+public class TablaHash<K, V> implements Serializable{
     
     private ListaSimple<EntradaHash<K, V>>[] tabla;
     private int tamanoActual; // Número de elementos insertados
@@ -63,6 +66,28 @@ public class TablaHash<K, V> {
         hash = Math.abs(hash); 
         // 2. Aplica módulo para que caiga dentro del tamaño del arreglo
         return (int) (hash % this.tamanoArreglo);
+    }
+    
+    /**
+     * Elimina un valor asociado a una clave.
+     * @param clave La clave a eliminar.
+     * @return true si se eliminó, false si no existía.
+     */
+    public boolean eliminar(K clave) {
+        int indice = funcionHash(clave);
+        ListaSimple<EntradaHash<K, V>> lista = this.tabla[indice];
+
+        // Necesitamos buscar la entrada específica para eliminarla
+        for (int i = 0; i < lista.getTamano(); i++) {
+            EntradaHash<K, V> entrada = lista.get(i);
+            if (entrada.clave.equals(clave)) {
+                // Usamos el método eliminar de la lista que acabamos de crear
+                lista.eliminar(entrada);
+                this.tamanoActual--;
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -165,4 +190,25 @@ public class TablaHash<K, V> {
         System.out.println(miTabla.buscar("Un título que no existe"));
     }
     
-}
+    public ListaSimple<K> obtenerTodasLasClaves() {
+        ListaSimple<K> claves = new ListaSimple<>();
+        if (tabla != null) {
+            for (int i = 0; i < tabla.length; i++) {
+                if (tabla[i] != null) {
+                    for (int j = 0; j < tabla[i].getTamano(); j++) {
+                        claves.agregar(tabla[i].get(j).clave);
+                    }
+                }
+            }
+        }
+        return claves;
+    }
+    
+ 
+    
+    }
+
+    
+    
+    
+

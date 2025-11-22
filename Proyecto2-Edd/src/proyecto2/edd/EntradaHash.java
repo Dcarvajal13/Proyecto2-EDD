@@ -13,7 +13,10 @@ package proyecto2.edd;
  * @param <K> El tipo de la Clave (Key).
  * @param <V> El tipo del Valor (Value).
  */
-public class EntradaHash<K, V> {
+
+import java.io.Serializable;
+
+public class EntradaHash<K, V> implements Serializable {
     
     K clave;
     V valor;
@@ -22,5 +25,13 @@ public class EntradaHash<K, V> {
         this.clave = clave;
         this.valor = valor;
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        EntradaHash<?, ?> other = (EntradaHash<?, ?>) obj;
+        return this.clave.equals(other.clave);
+}
     
 }

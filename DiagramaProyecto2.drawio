@@ -1,0 +1,127 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15" version="29.0.3">
+  <diagram name="Página-1" id="wEknyC1tjfueRnHFTgiU">
+    <mxGraphModel dx="3098" dy="2364" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-5" value="VentanaPrincipal" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="780" y="-250" width="240" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-6" value="&lt;div class=&quot;code-block ng-tns-c1277683580-537 ng-animate-disabled ng-trigger ng-trigger-codeBlockRevealAnimation&quot; data-hveid=&quot;0&quot; data-ved=&quot;0CAAQhtANahgKEwjRtKzQ3PqQAxUAAAAAHQAAAAAQ1RQ&quot;&gt;&lt;div class=&quot;formatted-code-block-internal-container ng-tns-c1277683580-537&quot;&gt;&lt;div class=&quot;animated-opacity ng-tns-c1277683580-537&quot;&gt;&lt;pre class=&quot;ng-tns-c1277683580-537&quot;&gt;&lt;code role=&quot;text&quot; data-test-id=&quot;code-content&quot; class=&quot;code-container formatted ng-tns-c1277683580-537&quot;&gt;- gestor : GestorInvestigaciones&lt;br&gt;- panelBotones : JPanel&lt;br&gt;- panelPrincipal : JPanel&lt;br&gt;- btnAgregarResumen : JButton&lt;br&gt;- btnAnalizarResumen : JButton&lt;br&gt;- btnBuscarPorAutor : JButton&lt;br&gt;- btnBuscarPorPalabra : JButton&lt;br&gt;- btnListarPalabras : JButton&lt;br&gt;- btnEliminarDatos : JButton&lt;br&gt;- btnSalir : JButton&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=0;fontSize=12;" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-5">
+          <mxGeometry y="26" width="240" height="164" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-7" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-5">
+          <mxGeometry y="190" width="240" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-8" value="&lt;span&gt;+ VentanaPrincipal() - configurarVentana() : void - inicializarComponentes() : void&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span&gt;- abrirDialogoAgregarResumen() : void&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;- mostrarDialogoAnalizarResumen() : void&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;- mostrarDialogoBuscarAutor() : void&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;- mostrarDialogoBuscarPalabra() : void&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;- mostrarDialogoListarPalabras() : void&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;- mostrarDialogoEliminarResumen() : void&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;- mostrarAnalisis(Resumen) : void&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;- procesarArchivo(File) : Resumen&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ main(String[]) : void&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=0;fontSize=12;" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-5">
+          <mxGeometry y="198" width="240" height="182" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-68" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;strokeColor=default;flowAnimation=0;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="pOpjMt4Ly64F_ZDwYxlG-9" target="pOpjMt4Ly64F_ZDwYxlG-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-9" value="Main" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=20;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="-390" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-11" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-9">
+          <mxGeometry y="20" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-12" value="&lt;span&gt;+ main(String[]) : void&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-9">
+          <mxGeometry y="60" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-39" value="GestorInvestigaciones" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="-200" width="300" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-40" value="&lt;span&gt;- repositorioResumenes : TablaHash&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span&gt;- indiceAutores : ArbolAVL -&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&amp;nbsp;indicePalabrasClaveHash : TablaHash&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;- indicePalabrasClaveAVL : ArbolAVL&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;- indiceTitulosOrdenados : ArbolAVL&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=12;fontStyle=0" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-39">
+          <mxGeometry y="26" width="300" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-41" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-39">
+          <mxGeometry y="120" width="300" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-42" value="&lt;span&gt;+ GestorInvestigaciones()&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span&gt;+ agregarResumen(Resumen) : boolean&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ buscarResumenPorTitulo(String) : Resumen&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ buscarResumenPorPalabra(String) : ListaSimple&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ eliminarResumen(String) : boolean&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ getAutoresOrdenados() : ListaSimple&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ getPalabrasClaveOrdenadas() : ListaSimple&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ getTitulosOrdenados() : ListaSimple&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ guardarDatos() : void&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ cargarDatos() : GestorInvestigaciones&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;- precargarDatos() : void&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=12;fontStyle=0" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-39">
+          <mxGeometry y="128" width="300" height="172" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-43" value="Resumen" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-370" y="190" width="320" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-44" value="&lt;span&gt;- titulo : String - autores : ListaSimple&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span&gt;- cuerpoResumen : String&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;- palabrasClave : ListaSimple&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=12;fontStyle=0" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-43">
+          <mxGeometry y="26" width="320" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-45" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-43">
+          <mxGeometry y="80" width="320" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-46" value="&lt;span&gt;+ Resumen(String, ListaSimple, String, ListaSimple)&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span&gt;+ getTitulo() : String&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ getAutores() : ListaSimple&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ getCuerpoResumen() : String&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ getPalabrasClave() : ListaSimple&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ equals(Object) : boolean&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ toString() : String&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=12;fontStyle=0" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-43">
+          <mxGeometry y="88" width="320" height="122" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-73" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;endArrow=diamondThin;endFill=0;" edge="1" parent="1" source="pOpjMt4Ly64F_ZDwYxlG-51" target="pOpjMt4Ly64F_ZDwYxlG-59">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-51" value="TablaHash" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="10" y="-110" width="240" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-52" value="&lt;span&gt;- tabla : ListaSimple[]&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span&gt;- tamanoActual : int&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span&gt;- tamanoArreglo : int&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=12;fontStyle=0" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-51">
+          <mxGeometry y="26" width="240" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-53" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-51">
+          <mxGeometry y="90" width="240" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-54" value="&lt;span&gt;+ TablaHash(int)&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span&gt;- funcionHash(K) : int&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ insertar(K, V) : boolean&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ buscar(K) : V&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ eliminar(K) : boolean&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ getTamanoActual() : int&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=12;fontStyle=0" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-51">
+          <mxGeometry y="98" width="240" height="102" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-55" value="ArbolAVL" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="345" y="190" width="250" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-56" value="&lt;span&gt;- raiz : NodoAVL&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=12;fontStyle=0" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-55">
+          <mxGeometry y="26" width="250" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-57" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-55">
+          <mxGeometry y="52" width="250" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-58" value="&lt;span&gt;+ ArbolAVL()&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span&gt;+ insertar(T) : void&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ buscar(T) : T&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ eliminar(T) : void&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ getListaInorden() : ListaSimple&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;- insertarRecursivo(NodoAVL, T) : NodoAVL&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;- eliminarRecursivo(NodoAVL, T) : NodoAVL&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;- rotacionDerecha(NodoAVL) : NodoAVL&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;- rotacionIzquierda(NodoAVL) : NodoAVL&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;- obtenerFactorEquilibrio(NodoAVL) : int&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=12;fontStyle=0" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-55">
+          <mxGeometry y="60" width="250" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-59" value="ListaSimple" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="130" width="160" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-60" value="&lt;span&gt;- cabeza : NodoLista&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span&gt;- tamano : int&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=12;fontStyle=0" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-59">
+          <mxGeometry y="26" width="160" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-61" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-59">
+          <mxGeometry y="60" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-62" value="&lt;span&gt;+ ListaSimple()&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span&gt;+ agregar(T) : void&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ eliminar(T) : boolean&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ get(int) : T&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ getTamano() : int&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ estaVacia() : boolean&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=12;fontStyle=0" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-59">
+          <mxGeometry y="68" width="160" height="102" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-69" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1.018;entryY=0.048;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=12;startSize=8;endSize=8;endArrow=open;endFill=0;" edge="1" parent="1" source="pOpjMt4Ly64F_ZDwYxlG-5" target="pOpjMt4Ly64F_ZDwYxlG-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-77" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;endArrow=open;endFill=0;dashed=1;" edge="1" parent="1" source="pOpjMt4Ly64F_ZDwYxlG-47" target="pOpjMt4Ly64F_ZDwYxlG-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-47" value="Autor" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-290" y="-110" width="250" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-48" value="&lt;span&gt;- nombre : String&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span&gt;- resumenes : ListaSimple&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=12;fontStyle=0" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-47">
+          <mxGeometry y="26" width="250" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-49" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-47">
+          <mxGeometry y="70" width="250" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-50" value="&lt;span&gt;+ Autor(String)&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span&gt;+ getNombre() : String&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ getResumenes() : ListaSimple&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ agregarResumen(Resumen) : void&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ compareTo(Autor) : int&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ equals(Object) : boolean&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;+ toString() : String&lt;/span&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=12;fontStyle=0" vertex="1" parent="pOpjMt4Ly64F_ZDwYxlG-47">
+          <mxGeometry y="78" width="250" height="112" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-74" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.059;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;entryPerimeter=0;endArrow=diamondThin;endFill=0;" edge="1" parent="1" source="pOpjMt4Ly64F_ZDwYxlG-47" target="pOpjMt4Ly64F_ZDwYxlG-59">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-75" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.01;entryY=0.099;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=12;startSize=8;endSize=8;endArrow=diamondThin;endFill=0;" edge="1" parent="1" source="pOpjMt4Ly64F_ZDwYxlG-43" target="pOpjMt4Ly64F_ZDwYxlG-62">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-78" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.004;entryY=0.118;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=12;startSize=8;endSize=8;endArrow=diamondThin;endFill=1;" edge="1" parent="1" source="pOpjMt4Ly64F_ZDwYxlG-52" target="pOpjMt4Ly64F_ZDwYxlG-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pOpjMt4Ly64F_ZDwYxlG-79" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.484;entryY=1.017;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=12;startSize=8;endSize=8;endArrow=diamondThin;endFill=1;" edge="1" parent="1" source="pOpjMt4Ly64F_ZDwYxlG-55" target="pOpjMt4Ly64F_ZDwYxlG-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

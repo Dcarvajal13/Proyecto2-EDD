@@ -38,6 +38,7 @@ public class GestorInvestigaciones implements Serializable{
      */
     private ArbolAVL<Autor> indiceAutores;
     private ArbolAVL<String> indiceTitulosOrdenados;
+    
 
     /**
      * Índice de Palabras Clave para Búsqueda Rápida (Req. 3):
@@ -65,7 +66,7 @@ public class GestorInvestigaciones implements Serializable{
         // Inicializamos las estructuras.
         // Elegimos un tamaño (preferiblemente primo) para las TablaHash.
         this.repositorioResumenes = new TablaHash<>(101); // Tamaño inicial de 101
-        this.indicePalabrasClaveHash = new TablaHash<>(251); // Tamaño mayor para palabras
+        this.indicePalabrasClaveHash = new TablaHash<>(50); // Tamaño mayor para palabras
         
         this.indiceAutores = new ArbolAVL<>();
         this.indicePalabrasClaveAVL = new ArbolAVL<>();
@@ -218,6 +219,22 @@ public class GestorInvestigaciones implements Serializable{
         
         return true; // Éxito
     }
+    
+    public ListaSimple<Resumen> buscarResumenesPorAutor(String nombreAutor) {
+        // 1. Creamos un autor "falso" solo con el nombre para buscarlo en el árbol
+        // (Esto funciona porque el compareTo de Autor solo mira el nombre)
+        Autor autorBusqueda = new Autor(nombreAutor);
+        
+        // 2. Buscamos en el Árbol AVL
+        Autor autorEncontrado = indiceAutores.buscar(autorBusqueda);
+        
+        // 3. Si existe, devolvemos sus resúmenes
+        if (autorEncontrado != null) {
+            return autorEncontrado.getResumenes();
+        } else {
+            return null; // No se encontró el autor
+        }
+    }
 
     /**
      * REQUERIMIENTO 2.b: Buscar un resumen por su título.
@@ -311,6 +328,75 @@ public class GestorInvestigaciones implements Serializable{
         this.agregarResumen(r2);
     }
     
+    public ListaSimple<String> obtenerTitulosDisponibles() {
+        return repositorioResumenes.obtenerTodasLasClaves();
+    }
+
+    // Lógica completa para el botón ELIMINAR (Borrado en cascada)
+    public boolean eliminarResumenGlobal(String titulo) {
+        Resumen aBorrar = repositorioResumenes.buscar(titulo);
+        if (aBorrar == null) return false;
+
+        // 1. Borrar del repositorio principal
+        boolean borradoHash = repositorioResumenes.eliminar(titulo);
+
+        // 2. Borrar referencias en Autores (Para que no salga en búsquedas)
+        ListaSimple<String> autores = aBorrar.getAutores();
+        for(int i=0; i<autores.getTamano(); i++) {
+            Autor autorObj = indiceAutores.buscar(new Autor(autores.get(i)));
+            if(autorObj != null) {
+                // Asumiendo que tu ListaSimple tiene método eliminar
+                autorObj.getResumenes().eliminar(aBorrar);
+            }
+        }
+        
+        return borradoHash;
+    }
+
+    // Lógica para el botón ANALIZAR
+    public String obtenerDetallesResumen(String titulo) {
+        Resumen r = repositorioResumenes.buscar(titulo);
+        if (r == null) return "Error: No se encontró el resumen.";
+        
+        return "TÍTULO: " + r.getTitulo() + "\n\n" +
+               "AUTORES: " + mostrarLista(r.getAutores()) + "\n" +
+               "RESUMEN: \n" + r.getCuerpoResumen() + "\n\n" +
+               "PALABRAS CLAVE: " + mostrarLista(r.getPalabrasClave());
+    }
+
+    // Auxiliar para convertir lista a texto
+    private String mostrarLista(ListaSimple<String> lista) {
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<lista.getTamano(); i++) {
+            sb.append(lista.get(i)).append(", ");
+        }
+        return sb.toString();
+    }
+    public String generarListadoPalabras() {
+        // Verificamos si la tabla de palabras existe
+        if (indicePalabrasClaveHash == null) {
+            return "Error: El índice de palabras clave no ha sido inicializado.";
+        }
+
+        ListaSimple<String> listaPalabras = indicePalabrasClaveHash.obtenerTodasLasClaves();
+        
+        if (listaPalabras.getTamano() == 0) {
+            return "No hay palabras clave registradas en el sistema.";
+        }
+        
+        StringBuilder sb = new StringBuilder();
+        sb.append("=== PALABRAS CLAVE REGISTRADAS ===\n\n");
+        
+        // Recorremos la lista para armar el texto
+        for (int i = 0; i < listaPalabras.getTamano(); i++) {
+            sb.append("• ").append(listaPalabras.get(i)).append("\n");
+        }
+        
+        return sb.toString();
+    }
+    
+     
+   
 
     
 }

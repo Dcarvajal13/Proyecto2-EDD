@@ -69,8 +69,7 @@ public class ArbolAVL<T extends Comparable<T>> implements Serializable{
      * @return El dato encontrado en el árbol, o null si no se encuentra.
      */
     public T buscar(T dato) {
-        NodoAVL nodo = buscarRecursivo(this.raiz, dato);
-        return (nodo == null) ? null : nodo.dato;
+        return buscarRecursivo(this.raiz, dato);
     }
     
     /**
@@ -213,19 +212,19 @@ public class ArbolAVL<T extends Comparable<T>> implements Serializable{
      * @param dato El dato a buscar.
      * @return El nodo que contiene el dato, o null si no se encuentra.
      */
-    private NodoAVL buscarRecursivo(NodoAVL nodo, T dato) {
+    private T buscarRecursivo(NodoAVL nodo, T dato) {
         if (nodo == null) {
             return null; // No encontrado
         }
 
         int comparacion = dato.compareTo(nodo.dato);
 
-        if (comparacion < 0) {
+        if (comparacion == 0) {
+            return nodo.dato; // ¡Encontrado!
+        } else if (comparacion < 0) {
             return buscarRecursivo(nodo.izquierdo, dato);
-        } else if (comparacion > 0) {
-            return buscarRecursivo(nodo.derecho, dato);
         } else {
-            return nodo; // Encontrado
+            return buscarRecursivo(nodo.derecho, dato);
         }
     }
 
