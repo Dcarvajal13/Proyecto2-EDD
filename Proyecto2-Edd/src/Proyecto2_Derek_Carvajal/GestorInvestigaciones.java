@@ -2,14 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyecto2.edd;
+package Proyecto2_Derek_Carvajal;
 
 /**
  *
  * @author derek
- * * Clase "Cerebro" del sistema
- * Contiene todas las estructuras de datos principales y la lógica de negocio
- * para gestionar las investigaciones
  */
 
 
@@ -17,31 +14,25 @@ import java.io.*;
 import java.io.Serializable;
 
 public class GestorInvestigaciones implements Serializable{
-    
-    // --- 1. ESTRUCTURAS DE DATOS PRINCIPALES ---
 
-    /**
-     * Repositorio Principal (Req. 1):
+    /*
+     * 
      * Almacena todos los Resúmenes.
      * Clave: Título del Resumen (String)
      * Valor: Objeto Resumen
-     * Complejidad esperada: O(1) para búsqueda/inserción.
      */
     private TablaHash<String, Resumen> repositorioResumenes;
 
-    /**
-     * Índice de Autores (Req. 4):
+    /*
      * Almacena un objeto Autor único por cada autor para listarlos
      * alfabéticamente.
      * Tipo: ArbolAVL de Objetos Autor (que es Comparable)
-     * Complejidad esperada: O(log n) para inserción/búsqueda.
      */
     private ArbolAVL<Autor> indiceAutores;
+    
     private ArbolAVL<String> indiceTitulosOrdenados;
     
-
     /**
-     * Índice de Palabras Clave para Búsqueda Rápida (Req. 3):
      * Permite buscar resúmenes por palabra clave en O(1).
      * Clave: Palabra Clave (String)
      * Valor: ListaSimple de Resúmenes que contienen esa palabra.
@@ -49,8 +40,7 @@ public class GestorInvestigaciones implements Serializable{
      */
     private TablaHash<String, ListaSimple<Resumen>> indicePalabrasClaveHash;
 
-    /**
-     * Índice de Palabras Clave para Listado Ordenado (Req. 5):
+    /*
      * Mantiene una lista única de todas las palabras clave, ordenadas
      * alfabéticamente.
      * Tipo: ArbolAVL de Strings.
@@ -58,13 +48,13 @@ public class GestorInvestigaciones implements Serializable{
      */
     private ArbolAVL<String> indicePalabrasClaveAVL;
 
-    /**
-     * Constructor del Gestor.
-     * Inicializa todas las estructuras de datos.
+    
+    /** Constructor
+     * 
      */
     public GestorInvestigaciones() {
-        // Inicializamos las estructuras.
-        // Elegimos un tamaño (preferiblemente primo) para las TablaHash.
+        // Inicializo las estructuras
+        // Elijo un tamaño  para las TablaHash.
         this.repositorioResumenes = new TablaHash<>(101); // Tamaño inicial de 101
         this.indicePalabrasClaveHash = new TablaHash<>(50); // Tamaño mayor para palabras
         
@@ -72,8 +62,6 @@ public class GestorInvestigaciones implements Serializable{
         this.indicePalabrasClaveAVL = new ArbolAVL<>();
         this.indiceTitulosOrdenados = new ArbolAVL<>();
 
-        // (Opcional) Aquí podrías llamar a un método para precargar datos
-        // como lo pide el Requerimiento Técnico 6.
         precargarDatos(); 
     }
     
@@ -87,11 +75,10 @@ public class GestorInvestigaciones implements Serializable{
         }
     }
 
-    /**
-     * REQUERIMIENTO 6: Cargar los datos desde el disco.
+    /*
      * Intenta leer el archivo y devuelve el objeto Gestor guardado.
      * Si falla o no existe, devuelve un Gestor nuevo y vacío.
-     * * @return Un objeto GestorInvestigaciones (recuperado o nuevo).
+     * * @return Un objeto GestorInvestigaciones
      */
     public static GestorInvestigaciones cargarDatos() {
         File archivo = new File("datos_supermetro.ser");
@@ -114,18 +101,19 @@ public class GestorInvestigaciones implements Serializable{
      * Elimina un resumen específico por su título.
      * Elimina referencias en autores, palabras clave y árboles.
      */
+    
     public boolean eliminarResumen(String titulo) {
-        // 1. Buscar el resumen antes de borrarlo
+        //  Buscar el resumen antes de borrarlo
         Resumen resumen = this.repositorioResumenes.buscar(titulo);
         if (resumen == null) return false;
 
-        // 2. Eliminar de la Tabla Hash Principal
+        // Eliminar de la Tabla Hash Principal
         this.repositorioResumenes.eliminar(titulo);
 
-        // 3. Eliminar del Árbol de Títulos Ordenados
+        // Eliminar del Árbol de Títulos Ordenados
         this.indiceTitulosOrdenados.eliminar(titulo);
 
-        // 4. Eliminar referencia de los Autores
+        // Eliminar referencia de los Autores
         ListaSimple<String> autores = resumen.getAutores();
         for (int i = 0; i < autores.getTamano(); i++) {
             // Buscamos al autor
@@ -136,7 +124,7 @@ public class GestorInvestigaciones implements Serializable{
             }
         }
 
-        // 5. Eliminar referencia de las Palabras Clave
+        // Eliminar referencia de las Palabras Clave
         ListaSimple<String> palabras = resumen.getPalabrasClave();
         for (int i = 0; i < palabras.getTamano(); i++) {
             String palabra = palabras.get(i);
@@ -149,18 +137,18 @@ public class GestorInvestigaciones implements Serializable{
         return true;
     }
 
-    // --- 2. MÉTODOS PRINCIPALES (LLAMADOS POR LA GUI) ---
+   
 
     /**
-     * REQUERIMIENTO 1: Agregar un nuevo resumen al sistema.
-     * Este método actualiza todas las estructuras de datos.
+     * Agregar un nuevo resumen al sistema
+     * Este método actualiza todas las estructuras de datos
      *
-     * @param nuevoResumen El objeto Resumen a agregar.
-     * @return true si se agregó con éxito, false si el título ya existía.
+     * @param nuevoResumen El objeto Resumen a agregar
+     * @return true si se agregó con éxito, false si el título ya existía
      */
     public boolean agregarResumen(Resumen nuevoResumen) {
         
-        // 1. Intentar insertar en el repositorio principal
+        //Intentar insertar en el repositorio principal
         boolean exito = this.repositorioResumenes.insertar(nuevoResumen.getTitulo(), nuevoResumen);
 
         if (!exito) {
@@ -170,65 +158,66 @@ public class GestorInvestigaciones implements Serializable{
         
         this.indiceTitulosOrdenados.insertar(nuevoResumen.getTitulo());
 
-        // 2. Procesar y agregar Autores
+        // Procesar y agregar Autores
         ListaSimple<String> nombresAutores = nuevoResumen.getAutores();
         for (int i = 0; i < nombresAutores.getTamano(); i++) {
             String nombreAutor = nombresAutores.get(i);
             
-            // Creamos un objeto Autor temporal solo para buscar
+            // Creo un objeto Autor temporal solo para buscar
             // (El constructor ahora hace trim() automáticamente)
             Autor autorBusqueda = new Autor(nombreAutor); 
             
             // Buscar el autor en el AVL
-            // (El ArbolAVL usará el compareToIgnoreCase nuevo que hicimos)
+            // (El ArbolAVL usará el compareToIgnoreCase nuevo que hice)
             Autor autorExistente = this.indiceAutores.buscar(autorBusqueda);
             
             if (autorExistente == null) {
                 // CASO 1: El autor NO existe en el árbol.
-                // Creamos uno nuevo, le asignamos el resumen y lo guardamos.
+                // Se crea uno nuevo, le asigno el resumen y lo guardo
+                
                 Autor autorNuevo = new Autor(nombreAutor);
                 autorNuevo.agregarResumen(nuevoResumen);
                 this.indiceAutores.insertar(autorNuevo);
             } else {
-                // CASO 2: El autor YA existe (ej. encontramos "Felipe").
-                // NO creamos uno nuevo. Usamos el existente y le añadimos el resumen.
+                // CASO 2: El autor YA existe
+                // No creo uno nuevo. Uso el existente y le añado el resumen
+                
                 autorExistente.agregarResumen(nuevoResumen);
             }
         }
 
-        // 3. Procesar y agregar Palabras Clave
+        // Procesar y agregar Palabras Clave
         ListaSimple<String> palabras = nuevoResumen.getPalabrasClave();
         for (int i = 0; i < palabras.getTamano(); i++) {
             String palabra = palabras.get(i);
 
-            // a. Agregar al AVL de listado ordenado (él maneja duplicados)
+            // Agregar al AVL de listado ordenado
             this.indicePalabrasClaveAVL.insertar(palabra);
 
-            // b. Agregar al Hash de búsqueda O(1)
+            // Agregar al Hash de búsqueda O(1)
             ListaSimple<Resumen> listaResumenes = this.indicePalabrasClaveHash.buscar(palabra);
             if (listaResumenes == null) {
-                // Si la palabra es nueva, creamos una lista y la agregamos
+                // Si la palabra es nueva, creo una lista y la agrego
                 ListaSimple<Resumen> nuevaLista = new ListaSimple<>();
                 nuevaLista.agregar(nuevoResumen);
                 this.indicePalabrasClaveHash.insertar(palabra, nuevaLista);
             } else {
-                // Si la palabra ya existe, añadimos el resumen a su lista
+                // Si la palabra ya existe, añado el resumen a su lista
                 listaResumenes.agregar(nuevoResumen);
             }
         }
         
-        return true; // Éxito
+        return true; 
     }
     
     public ListaSimple<Resumen> buscarResumenesPorAutor(String nombreAutor) {
-        // 1. Creamos un autor "falso" solo con el nombre para buscarlo en el árbol
-        // (Esto funciona porque el compareTo de Autor solo mira el nombre)
+     
         Autor autorBusqueda = new Autor(nombreAutor);
         
-        // 2. Buscamos en el Árbol AVL
+        // Busco en el Árbol AVL
         Autor autorEncontrado = indiceAutores.buscar(autorBusqueda);
         
-        // 3. Si existe, devolvemos sus resúmenes
+        // Si existe, devuelvo sus resúmenes
         if (autorEncontrado != null) {
             return autorEncontrado.getResumenes();
         } else {
@@ -237,10 +226,10 @@ public class GestorInvestigaciones implements Serializable{
     }
 
     /**
-     * REQUERIMIENTO 2.b: Buscar un resumen por su título.
+     * Buscar un resumen por su título
      *
-     * @param titulo El título a buscar.
-     * @return El objeto Resumen, o null si no se encuentra.
+     * @param titulo El título a buscar
+     * @return El objeto Resumen, o null si no se encuentra
      */
     public Resumen buscarResumenPorTitulo(String titulo) {
         // La TablaHash hace el trabajo pesado en O(1)
@@ -248,10 +237,10 @@ public class GestorInvestigaciones implements Serializable{
     }
     
     /**
-     * REQUERIMIENTO 3: Buscar Investigaciones por palabra clave.
+     * Buscar Investigaciones por palabra clave
      *
-     * @param palabra La palabra clave a buscar.
-     * @return Una ListaSimple de Resúmenes, o null si la palabra no existe.
+     * @param palabra La palabra clave a buscar
+     * @return Una ListaSimple de Resúmenes, o null si la palabra no existe
      */
     public ListaSimple<Resumen> buscarResumenPorPalabra(String palabra) {
         // La TablaHash de palabras clave hace la búsqueda en O(1)
@@ -259,9 +248,9 @@ public class GestorInvestigaciones implements Serializable{
     }
 
     /**
-     * REQUERIMIENTO 4: Listar autores ordenados alfabéticamente.
+     *Listar autores ordenados alfabéticamente
      *
-     * @return Una ListaSimple de objetos Autor, ordenados.
+     * @return Una ListaSimple de objetos Autor, ordenados
      */
     public ListaSimple<Autor> getAutoresOrdenados() {
         // El ArbolAVL hace el recorrido InOrden en O(n)
@@ -269,7 +258,7 @@ public class GestorInvestigaciones implements Serializable{
     }
     
     /**
-     * REQUERIMIENTO 5: Listar palabras clave ordenadas alfabéticamente.
+     * Listar palabras clave ordenadas alfabéticamente.
      *
      * @return Una ListaSimple de Strings (palabras), ordenadas.
      */
@@ -283,8 +272,8 @@ public class GestorInvestigaciones implements Serializable{
         return this.indiceTitulosOrdenados.getListaInorden(); 
     }
     /**
-     * REQUERIMIENTO 6: Guardar y Cargar Datos (Serialización).
-     * (Estos métodos son más complejos y se dejan para el final).
+     * Guardar y Cargar Datos (Serialización).
+     * 
      */
     
     private void precargarDatos() {
@@ -304,7 +293,7 @@ public class GestorInvestigaciones implements Serializable{
 
         Resumen r1 = new Resumen("Orígenes de la Computación", autores1, cuerpo1, palabras1);
         
-        // Lo agregamos al sistema
+        // Lo agrego al sistema
         this.agregarResumen(r1);
 
 
@@ -324,7 +313,7 @@ public class GestorInvestigaciones implements Serializable{
 
         Resumen r2 = new Resumen("Introducción a la Inteligencia Artificial", autores2, cuerpo2, palabras2);
 
-        // Lo agregamos al sistema
+        // Lo agrego al sistema
         this.agregarResumen(r2);
     }
     
@@ -332,20 +321,20 @@ public class GestorInvestigaciones implements Serializable{
         return repositorioResumenes.obtenerTodasLasClaves();
     }
 
-    // Lógica completa para el botón ELIMINAR (Borrado en cascada)
+    // Lógica completa para el botón ELIMINAR 
     public boolean eliminarResumenGlobal(String titulo) {
         Resumen aBorrar = repositorioResumenes.buscar(titulo);
         if (aBorrar == null) return false;
 
-        // 1. Borrar del repositorio principal
+        // Borrar del repositorio principal
         boolean borradoHash = repositorioResumenes.eliminar(titulo);
 
-        // 2. Borrar referencias en Autores (Para que no salga en búsquedas)
+        // Borrar referencias en Autores 
         ListaSimple<String> autores = aBorrar.getAutores();
         for(int i=0; i<autores.getTamano(); i++) {
             Autor autorObj = indiceAutores.buscar(new Autor(autores.get(i)));
             if(autorObj != null) {
-                // Asumiendo que tu ListaSimple tiene método eliminar
+                
                 autorObj.getResumenes().eliminar(aBorrar);
             }
         }
@@ -373,7 +362,7 @@ public class GestorInvestigaciones implements Serializable{
         return sb.toString();
     }
     public String generarListadoPalabras() {
-        // Verificamos si la tabla de palabras existe
+        // Verifico si la tabla de palabras existe
         if (indicePalabrasClaveHash == null) {
             return "Error: El índice de palabras clave no ha sido inicializado.";
         }
@@ -387,7 +376,7 @@ public class GestorInvestigaciones implements Serializable{
         StringBuilder sb = new StringBuilder();
         sb.append("=== PALABRAS CLAVE REGISTRADAS ===\n\n");
         
-        // Recorremos la lista para armar el texto
+        // Recorro la lista para armar el texto
         for (int i = 0; i < listaPalabras.getTamano(); i++) {
             sb.append("• ").append(listaPalabras.get(i)).append("\n");
         }

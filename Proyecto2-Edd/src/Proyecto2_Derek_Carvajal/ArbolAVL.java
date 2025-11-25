@@ -2,13 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyecto2.edd;
+package Proyecto2_Derek_Carvajal;
 
 /**
- * Implementación de un Árbol AVL (Árbol Binario de Búsqueda Auto-Balanceable).
- * Esta versión NO utiliza librerías de java.util para sus operaciones
- * principales,
- * en cumplimiento con las reglas del proyecto.
+ * Implementación de un Árbol AVL
  *
  * @param <T> El tipo de dato a almacenar, debe ser comparable.
  */
@@ -139,7 +136,7 @@ public class ArbolAVL<T extends Comparable<T>> implements Serializable{
      * @return Una ListaSimple<T> con los elementos ordenados.
      */
     public ListaSimple<T> getListaInorden() {
-        // Usa nuestra propia clase ListaSimple
+        // Usa mi propia clase ListaSimple
         ListaSimple<T> lista = new ListaSimple<>();
         recorridoInorden(this.raiz, lista);
         return lista;
@@ -150,12 +147,12 @@ public class ArbolAVL<T extends Comparable<T>> implements Serializable{
     /**
      * Método recursivo para insertar un dato y rebalancear el árbol.
      *
-     * @param nodo El nodo actual en la recursión.
-     * @param dato El dato a insertar.
-     * @return El nuevo nodo raíz del subárbol (potencialmente rebalanceado).
+     * @param nodo El nodo actual en la recursión
+     * @param dato El dato a insertar
+     * @return El nuevo nodo raíz del subárbol 
      */
     private NodoAVL insertarRecursivo(NodoAVL nodo, T dato) {
-        // 1. Inserción estándar de Árbol Binario de Búsqueda (ABB)
+        //  Inserción estándar de Árbol Binario de Búsqueda
         if (nodo == null) {
             return new NodoAVL(dato);
         }
@@ -167,41 +164,41 @@ public class ArbolAVL<T extends Comparable<T>> implements Serializable{
         } else if (comparacion > 0) {
             nodo.derecho = insertarRecursivo(nodo.derecho, dato);
         } else {
-            // Dato duplicado. No se inserta.
+            // Dato duplicado. No se inserta
             return nodo;
         }
 
-        // 2. Actualizar la altura del nodo actual
+        //  Actualizar la altura del nodo actual
         actualizarAltura(nodo);
 
-        // 3. Obtener el Factor de Equilibrio (FE)
+        //  Obtener el Factor de Equilibrio
         int fe = obtenerFactorEquilibrio(nodo);
 
-        // 4. Rebalancear si es necesario (4 casos)
+        //  Rebalancear si es necesario
 
-        // Caso Izquierda-Izquierda (LL)
+        // Caso Izquierda-Izquierda 
         if (fe > 1 && obtenerFactorEquilibrio(nodo.izquierdo) >= 0) {
             return rotacionDerecha(nodo);
         }
 
-        // Caso Derecha-Derecha (RR)
+        // Caso Derecha-Derecha
         if (fe < -1 && obtenerFactorEquilibrio(nodo.derecho) <= 0) {
             return rotacionIzquierda(nodo);
         }
 
-        // Caso Izquierda-Derecha (LR)
+        // Caso Izquierda-Derecha 
         if (fe > 1 && obtenerFactorEquilibrio(nodo.izquierdo) < 0) {
             nodo.izquierdo = rotacionIzquierda(nodo.izquierdo);
             return rotacionDerecha(nodo);
         }
 
-        // Caso Derecha-Izquierda (RL)
+        // Caso Derecha-Izquierda
         if (fe < -1 && obtenerFactorEquilibrio(nodo.derecho) > 0) {
             nodo.derecho = rotacionDerecha(nodo.derecho);
             return rotacionIzquierda(nodo);
         }
 
-        // 5. Retornar el nodo (sin cambios o ya balanceado)
+        //  Retornar el nodo
         return nodo;
     }
 
@@ -220,7 +217,7 @@ public class ArbolAVL<T extends Comparable<T>> implements Serializable{
         int comparacion = dato.compareTo(nodo.dato);
 
         if (comparacion == 0) {
-            return nodo.dato; // ¡Encontrado!
+            return nodo.dato; // Encontrado
         } else if (comparacion < 0) {
             return buscarRecursivo(nodo.izquierdo, dato);
         } else {
@@ -229,7 +226,7 @@ public class ArbolAVL<T extends Comparable<T>> implements Serializable{
     }
 
     /**
-     * Método recursivo para el recorrido In-Orden (Izquierdo, Raíz, Derecho).
+     * Método recursivo para el recorrido In-Orden
      *
      * @param nodo El nodo actual.
      * @param lista La ListaSimple donde se agregan los elementos.
@@ -237,12 +234,12 @@ public class ArbolAVL<T extends Comparable<T>> implements Serializable{
     private void recorridoInorden(NodoAVL nodo, ListaSimple<T> lista) {
         if (nodo != null) {
             recorridoInorden(nodo.izquierdo, lista);
-            lista.agregar(nodo.dato); // Usa el método .agregar() de nuestra lista
+            lista.agregar(nodo.dato); // Usa el método .agregar() de mi lista
             recorridoInorden(nodo.derecho, lista);
         }
     }
 
-    // --- MÉTODOS AUXILIARES DE BALANCEO ---
+
 
     /**
      * Obtiene la altura de un nodo.
@@ -269,8 +266,8 @@ public class ArbolAVL<T extends Comparable<T>> implements Serializable{
     }
 
     /**
-     * Calcula el Factor de Equilibrio (FE) de un nodo.
-     * FE = altura(hijoIzquierdo) - altura(hijoDerecho)
+     * Calcula el Factor de Equilibrio de un nodo
+     * Factor de Equilibrio = altura(hijoIzquierdo) - altura(hijoDerecho)
      *
      * @param nodo El nodo a calcular.
      * @return El factor de equilibrio.
@@ -283,7 +280,7 @@ public class ArbolAVL<T extends Comparable<T>> implements Serializable{
     }
 
     /**
-     * Realiza una rotación simple a la derecha (Caso LL).
+     * Realiza una rotación simple a la derecha
      *
      * @param z El nodo desbalanceado (+2).
      * @return El nuevo nodo raíz del subárbol.
@@ -296,7 +293,7 @@ public class ArbolAVL<T extends Comparable<T>> implements Serializable{
         y.derecho = z;
         z.izquierdo = T3;
 
-        // Actualizar alturas (¡Importante: primero Z, luego Y!)
+        // Actualizar alturas 
         actualizarAltura(z);
         actualizarAltura(y);
 
@@ -304,7 +301,7 @@ public class ArbolAVL<T extends Comparable<T>> implements Serializable{
     }
 
     /**
-     * Realiza una rotación simple a la izquierda (Caso RR).
+     * Realiza una rotación simple a la izquierda
      *
      * @param z El nodo desbalanceado (-2).
      * @return El nuevo nodo raíz del subárbol.
@@ -317,7 +314,7 @@ public class ArbolAVL<T extends Comparable<T>> implements Serializable{
         y.izquierdo = z;
         z.derecho = T2;
 
-        // Actualizar alturas (¡Importante: primero Z, luego Y!)
+        // Actualizar alturas 
         actualizarAltura(z);
         actualizarAltura(y);
 

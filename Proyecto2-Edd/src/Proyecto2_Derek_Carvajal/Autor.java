@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyecto2.edd;
+package Proyecto2_Derek_Carvajal;
 
 /**
  *
@@ -25,7 +25,7 @@ public class Autor implements Comparable<Autor>, Serializable{
      * @param nombre El nombre del autor.
      */
     public Autor(String nombre) {
-        // CORRECCIÓN 1: Limpiamos espacios al crear el autor
+        
         if (nombre != null) {
             this.nombre = nombre.trim(); 
         } else {
@@ -44,21 +44,20 @@ public class Autor implements Comparable<Autor>, Serializable{
     }
 
     /**
-     * Agrega un resumen a la lista de publicaciones de este autor.
+     * Agrega un resumen a la lista de publicaciones de este autor
      */
     public void agregarResumen(Resumen resumen) {
-        // CORRECCIÓN 2: Validar que no agreguemos el mismo resumen dos veces
-        // al mismo autor (por seguridad).
+        //  Validar que no agreguemos el mismo resumen dos veces al mismo autor
         for (int i = 0; i < this.resumenes.getTamano(); i++) {
             if (this.resumenes.get(i).getTitulo().equalsIgnoreCase(resumen.getTitulo())) {
-                return; // Ya tiene este resumen, no hacemos nada
+                return; // Ya tiene este resumen, no se hace nada
             }
         }
         this.resumenes.agregar(resumen);
     }
 
     /**
-     * Método de comparación (compareTo) requerido por la interfaz Comparable.
+     * Método de comparación (compareTo)
      * Permite al ArbolAVL ordenar los autores alfabéticamente por nombre.
      *
      * @param otroAutor El otro Autor con el que se va a comparar.
@@ -70,7 +69,7 @@ public class Autor implements Comparable<Autor>, Serializable{
         return this.nombre.compareToIgnoreCase(otroAutor.nombre);
     }
 
-    // Redefinimos equals y hashCode para búsquedas (buena práctica)
+    // Redefino equals y hashCode para búsquedas
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
